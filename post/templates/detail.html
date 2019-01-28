@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block head%}
+  {{ post.title }}
+{% endblock %}
+{% block body %}
+  Title: {{ post.title }} <br />
+  Date created: {{ post.date_created }} <br />
+  Content: {{ post.content }}<br />
+  <a href="{% url 'post:update' post_id=post.id%}">Update Post</a> <br />
+  <hr>
+  <a href="{% url 'post:addcomment' post_id=post.id%}">Add Comment</a> <br />
+  Comments: <br />
+
+    <ol class="collection">
+      {% for comment in post.comments.all%}
+        <li class="collection-item">
+          {{ comment.content|linebreaks }}
+      </li>
+      {% endfor %}
+    </ol>
+
+  {% endblock%}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head %}
+  Homepage
+{% endblock %}
+{% block body %}
+
+<a class="btn btn-primary waves-effect waves-light" href="{% url 'post:create' %}">Create a new post</a>
+  <ol class="collection">
+    {% for post in posts %}
+      <li class="collection-item">
+        <a href="{% url 'post:detail' post.id %}">Post:
+        {{ post.title }} </a>
+      {% endfor %}
+    </li>
+  </ol>
+
+{% endblock %}

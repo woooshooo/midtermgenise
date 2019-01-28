@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block head%}
+  Create Post
+{% endblock %}
+{% block body %}
+  <form class="form" action="{% url 'post:create' %}" method="POST">
+    {% csrf_token %}
+
+    {% for field in form %}
+      {{ field.errors }}
+      <div class="input-field col s6">
+        {{ field.label }}
+        {{ field }}
+      </div>
+    {% endfor %}
+
+    <button class="btn btn-primary waves-effect waves-light"type="submit" value="Add">Add Post</button>
+  </form>
+{% endblock %}
